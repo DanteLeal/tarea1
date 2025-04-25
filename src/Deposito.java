@@ -1,20 +1,21 @@
 import java.util.ArrayList;
 
-public class Deposito {
-    private final ArrayList<Bebida> deposito;
+class Deposito<T> {
+
+    private ArrayList<T> objetos;
 
     public Deposito() {
-        deposito = new ArrayList<>();
+        objetos = new ArrayList<>();
     }
 
-    public void addBebida (Bebida bebida) {
-        deposito.add(bebida);
+    public void addObjeto(T objeto) {
+        objetos.add(objeto);
     }
 
-    public Bebida getBebida() {
-        if (!deposito.isEmpty()) {
-            return deposito.removeFirst();
+    public T getObjeto() {
+        if (!objetos.isEmpty()) {
+            return objetos.removeFirst();
         }
-        else return null;
+        return null;
     }
 }
