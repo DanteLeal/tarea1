@@ -3,6 +3,8 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
+        /*
+
         // Inicializar objetos a utilizar
         Expendedor exp = new Expendedor(5,1000);
         Moneda m = null;
@@ -125,6 +127,8 @@ public class Main {
         c = new Comprador(m,Expendedor.SPRITE,exp);
         System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $1500
         System.out.println();
+
+        */
     }
 }
 
