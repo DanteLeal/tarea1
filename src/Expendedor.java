@@ -1,55 +1,68 @@
 public class Expendedor {
-    private final Deposito<Producto> productos;
-    private final Deposito<Moneda> monedas;
-    private final int precio;
+    private final Deposito<Producto> depositoCoca;
+    private final Deposito<Producto> depositoSprite;
+    private final Deposito<Moneda> depositoMonedas;
 
-    public static final int  COCA = 1;
-    public static final int  SPRITE = 2;
+    public static final int COCA = ProductoTipo.COCA.getNumero();
+    public static final int SPRITE = ProductoTipo.SPRITE.getNumero();
+    public static final int PRECIO_COCA = ProductoTipo.COCA.getPrecio();
+    public static final int PRECIO_SPRITE = ProductoTipo.SPRITE.getPrecio();
 
-    public Expendedor(int num_bebidas, int precioBebidas) {
-        productos = new Deposito<>();
-        monedas = new Deposito<>();
-        this.precio = precioBebidas;
+    public Expendedor(int numProductos) {
+        depositoCoca = new Deposito<>();
+        depositoSprite = new Deposito<>();
+        depositoMonedas = new Deposito<>();
 
-        for (int i = 0; i< num_bebidas; i++) {
-            productos.addObjeto(new CocaCola(100+i));
-            productos.addObjeto(new Sprite(200+i));
+        for (int i = 0; i < numProductos; i++) {
+            depositoCoca.addObjeto(new CocaCola(100+i));
+            depositoSprite.addObjeto(new Sprite(200+i));
+            // Añadir subclases de dulce
         }
     }
 
-    // Reemplazar este metodo por comprarProducto()
-    /*public Bebida comprarBebida(Moneda moneda, int cual) {
-        Bebida bebida = null;
-
-        if (moneda == null) {
+    public Producto comprarProducto(Moneda moneda, int cual) {
+        if (moneda == null) {            
             return null;
         }
 
-        int valor_moneda = moneda.getValor();
+        int valorMoneda = moneda.getValor();
+        Producto producto = null;
 
-        if ((cual == COCA) && (valor_moneda >= precio)) {
-            bebida = deposito_coca.getBebida();
-        }
-        else if ((cual == SPRITE) && (valor_moneda >= precio)) {
-            bebida = deposito_sprite.getBebida();
-        }
-
-
-        if (bebida != null) {
-            for (int i = 0; i < ((valor_moneda-precio)/100); i++) {
-                monedas.addObjeto(new Moneda100());
+        if (cual == COCA && valorMoneda >= PRECIO_COCA) {
+            producto = depositoCoca.getObjeto();
+            if (producto != null) {
+                int vuelto = moneda.getValor() - PRECIO_COCA;
+                for (int i = 0; i < vuelto / 100; i++) {
+                    depositoMonedas.addObjeto(new Moneda100());
+                }
+                return producto;
             }
-            return bebida;
+            else {
+                depositoMonedas.addObjeto(moneda);
+                return null;
+            }
         }
-
-        for (int i = 0; i < ((valor_moneda)/100); i++) {
-            monedas.addObjeto(new Moneda100());
+        else if (cual == SPRITE && valorMoneda >= PRECIO_SPRITE) {
+            producto = depositoSprite.getObjeto();
+            if (producto != null) {
+                int vuelto = moneda.getValor() - PRECIO_SPRITE;
+                for (int i = 0; i < vuelto / 100; i++) {
+                    depositoMonedas.addObjeto(new Moneda100());
+                }
+                return producto;
+            }
+            else {
+                depositoMonedas.addObjeto(moneda);
+                return null;
+            }
         }
-
-        return null;
-    }*/
+        else {
+            depositoMonedas.addObjeto(moneda);
+            return null;
+        }
+    }
 
     public Moneda getVuelto () {
-        return monedas.getObjeto();
+        return depositoMonedas.getObjeto();
     }
 }
