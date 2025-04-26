@@ -1,25 +1,24 @@
 public class Expendedor {
-    private final Deposito deposito_coca;
-    private final Deposito deposito_sprite;
-    private final DepositoM deposito_monVu;
+    private final Deposito<Producto> productos;
+    private final Deposito<Moneda> monedas;
     private final int precio;
 
     public static final int  COCA = 1;
     public static final int  SPRITE = 2;
 
     public Expendedor(int num_bebidas, int precioBebidas) {
-        deposito_coca = new Deposito();
-        deposito_sprite = new Deposito();
-        deposito_monVu = new DepositoM();
+        productos = new Deposito<>();
+        monedas = new Deposito<>();
         this.precio = precioBebidas;
 
         for (int i = 0; i< num_bebidas; i++) {
-            deposito_coca.addBebida(new CocaCola(100+i));
-            deposito_sprite.addBebida(new Sprite(200+i));
+            productos.addObjeto(new CocaCola(100+i));
+            productos.addObjeto(new Sprite(200+i));
         }
     }
 
-    public Bebida comprarBebida(Moneda moneda, int cual) {
+    // Reemplazar este metodo por comprarProducto()
+    /*public Bebida comprarBebida(Moneda moneda, int cual) {
         Bebida bebida = null;
 
         if (moneda == null) {
@@ -38,21 +37,19 @@ public class Expendedor {
 
         if (bebida != null) {
             for (int i = 0; i < ((valor_moneda-precio)/100); i++) {
-                deposito_monVu.addMoneda(new Moneda100());
+                monedas.addObjeto(new Moneda100());
             }
             return bebida;
         }
 
         for (int i = 0; i < ((valor_moneda)/100); i++) {
-            deposito_monVu.addMoneda(new Moneda100());
+            monedas.addObjeto(new Moneda100());
         }
 
         return null;
-    }
-
-
+    }*/
 
     public Moneda getVuelto () {
-        return deposito_monVu.getMoneda();
+        return monedas.getObjeto();
     }
 }
