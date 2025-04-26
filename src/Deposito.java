@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
-class Deposito<T> {
+public class Deposito<T> {
 
-    private ArrayList<T> objetos;
+    private final ArrayList<T> objetos;
 
     public Deposito() {
         objetos = new ArrayList<>();
