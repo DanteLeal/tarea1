@@ -14,10 +14,8 @@ public abstract class Bebida extends Producto {
         return serie;
     }
 
-    // No setter methods.
-
     // Abstract methods
-    public abstract String beber ();
+    public abstract String sabor();
 }
 
 // Subclase de Bebida: CocaCola (Al ser subclase, hereda las variables de Bebida)
@@ -29,10 +27,25 @@ class CocaCola extends Bebida {
 
     // Abstract method from superclass
     @Override
-    public String beber () {
+    public String sabor() {
         return "cocacola";
     }
 }
+
+// Subclase de Bebida: Fanta (Al ser subclase, hereda las variables de Bebida)
+class Fanta extends Bebida {
+    // Constructor method
+    public Fanta(int serie) {
+        super(serie);
+    }
+
+    // Abstract method from superclass
+    @Override
+    public String sabor() {
+        return "fanta";
+    }
+}
+
 
 // Subclase de Bebida: Sprite (Al ser subclase, hereda las variables de Bebida)
 class Sprite extends Bebida {
@@ -43,7 +56,7 @@ class Sprite extends Bebida {
 
     // Abstract method from superclass
     @Override
-    public String beber () {
+    public String sabor() {
         return "sprite";
     }
 }
