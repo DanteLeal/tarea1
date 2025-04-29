@@ -14,7 +14,7 @@ public class Deposito<T> {
 
     public T getObjeto() {
         if (!objetos.isEmpty()) {
-            return objetos.remove(0);
+            return objetos.removeFirst();
         }
         return null;
     }

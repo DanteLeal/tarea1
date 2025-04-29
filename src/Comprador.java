@@ -3,9 +3,9 @@ public class Comprador {
     private final int vuelto;
 
     public Comprador(Moneda moneda, int cualBebida, Expendedor expendedor) {
-        Bebida bebida_comprada = expendedor.comprarBebida(moneda, cualBebida);
+        Producto bebida_comprada = expendedor.comprarProducto(moneda, cualBebida);
         if (bebida_comprada != null) {
-            this.sonido = bebida_comprada.beber();
+            this.sonido = bebida_comprada.getSabor();
         } else {
             this.sonido = null;
         }
