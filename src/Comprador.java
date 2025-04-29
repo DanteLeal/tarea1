@@ -5,7 +5,7 @@ public class Comprador {
     public Comprador(Moneda moneda, int cualBebida, Expendedor expendedor) {
         Producto bebida_comprada = expendedor.comprarProducto(moneda, cualBebida);
         if (bebida_comprada != null) {
-            this.sonido = bebida_comprada.beber();
+            this.sonido = bebida_comprada.sabor();
         } else {
             this.sonido = null;
         }
