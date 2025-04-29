@@ -130,7 +130,7 @@ public class Expendedor {
         }
         else {
             depositoMonedas.addObjeto(moneda);
-            throw new PagoInsuficienteException("El pago es insuficiente.");
+            throw new PagoInsuficienteException("No alcanza para comprar el producto o el número de depósito es erróneo.");
         }
     }
 
