@@ -7,7 +7,7 @@ public abstract class Bebida extends Producto {
     }
 
     // Abstract methods
-    public abstract String sabor();
+    public abstract String getSabor();
 }
 
 // Subclase de Bebida: CocaCola (Al ser subclase, hereda las variables de Bebida)
@@ -19,7 +19,7 @@ class CocaCola extends Bebida {
 
     // Abstract method from superclass
     @Override
-    public String sabor() {
+    public String getSabor() {
         return "cocacola";
     }
 }
@@ -33,7 +33,7 @@ class Fanta extends Bebida {
 
     // Abstract method from superclass
     @Override
-    public String sabor() {
+    public String getSabor() {
         return "fanta";
     }
 }
@@ -48,7 +48,7 @@ class Sprite extends Bebida {
 
     // Abstract method from superclass
     @Override
-    public String sabor() {
+    public String getSabor() {
         return "sprite";
     }
 }

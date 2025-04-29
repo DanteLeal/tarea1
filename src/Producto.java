@@ -20,5 +20,5 @@ public abstract class Producto {
     }
 
     // Abstract method
-    public abstract String sabor();
+    public abstract String getSabor();
 }

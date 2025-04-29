@@ -7,7 +7,7 @@ public abstract class Dulce extends Producto {
     }
 
     // Abstract methods
-    public abstract String sabor();
+    public abstract String getSabor();
 }
 
 // Subclase de Bebida: Snickers (Al ser subclase, hereda las variables de Dulce)
@@ -19,7 +19,7 @@ class Snickers extends Dulce {
 
     // Abstract method from superclass
     @Override
-    public String sabor() {
+    public String getSabor() {
         return "snickers";
     }
 }
@@ -33,7 +33,7 @@ class Super8 extends Dulce {
 
     // Abstract method from superclass
     @Override
-    public String sabor() {
+    public String getSabor() {
         return "super8";
     }
 }
