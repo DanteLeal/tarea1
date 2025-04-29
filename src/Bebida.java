@@ -1,17 +1,9 @@
 // Clase Bebida (Bebidas que se almacenarán en Depósitos de la clase Deposito.java)
 public abstract class Bebida extends Producto {
-    // Variables
-    private final int serie;
 
     // Constructor method
     public Bebida(int serie) {
         super(serie);
-        this.serie = serie;
-    }
-
-    // Getter methods
-    public int getSerie() {
-        return serie;
     }
 
     // Abstract methods

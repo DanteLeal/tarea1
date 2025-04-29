@@ -13,4 +13,12 @@ public abstract class Producto {
     public void setPrecio(int precio) {
         this.precio = precio;
     }
+
+    // Getter method
+    public int getSerie() {
+        return serie;
+    }
+
+    // Abstract method
+    public abstract String sabor();
 }
