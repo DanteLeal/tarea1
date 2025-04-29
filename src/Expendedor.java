@@ -37,7 +37,7 @@ public class Expendedor {
 
         for (int i = 0; i < numProductos; i++) {
             depositoCoca.addObjeto(new CocaCola(1000+i));
-            depositoCoca.addObjeto(new Fanta(2000+i));
+            depositoFanta.addObjeto(new Fanta(2000+i));
             depositoSprite.addObjeto(new Sprite(3000+i));
             depositoSnickers.addObjeto(new Snickers(4000+i));
             depositoSuper8.addObjeto(new Super8(5000+i));
