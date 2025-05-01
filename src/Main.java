@@ -33,7 +33,7 @@ public class Main {
         // Mostrar monedas sin ordenar
         System.out.println("\nMonedas sin ordenar");
         for (int i = 0; i < monedas.size(); i++) {
-            System.out.println(monedas.get(i).getValor());
+            System.out.println(monedas.get(i).toString());
         }
 
         // Ordenar las monedas
@@ -42,7 +42,7 @@ public class Main {
         // Mostrar monedas ordenadas
         System.out.println("\nMonedas ordenadas:");
         for (int i = 0; i < monedas.size(); i++) {
-            System.out.println(monedas.get(i).getValor());
+            System.out.println(monedas.get(i).toString());
         }
         
         /*
