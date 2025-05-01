@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -17,6 +19,32 @@ public class Main {
             producto = fantas.getObjeto();
         }
 
+        // Test sort de monedas
+        ArrayList<Moneda> monedas = new ArrayList<>();
+        monedas.add(new Moneda500());
+        monedas.add(new Moneda1500());
+        monedas.add(new Moneda1500());
+        monedas.add(new Moneda1000());
+        monedas.add(new Moneda100());
+        monedas.add(new Moneda500());
+        monedas.add(new Moneda1000());
+        monedas.add(new Moneda100());
+        
+        // Mostrar monedas sin ordenar
+        System.out.println("\nMonedas sin ordenar");
+        for (int i = 0; i < monedas.size(); i++) {
+            System.out.println(monedas.get(i).getValor());
+        }
+
+        // Ordenar las monedas
+        monedas.sort(null);
+
+        // Mostrar monedas ordenadas
+        System.out.println("\nMonedas ordenadas:");
+        for (int i = 0; i < monedas.size(); i++) {
+            System.out.println(monedas.get(i).getValor());
+        }
+        
         /*
 
         // Inicializar objetos a utilizar
