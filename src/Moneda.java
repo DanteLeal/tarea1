@@ -1,19 +1,32 @@
 // Clase Moneda (Monedas que se almacenarán en Depósitos de la clase DepositoM.java)
-public abstract class Moneda {
+public abstract class Moneda implements Comparable<Moneda> {
     // No variables.
 
     // Constructor method vacío
     public Moneda() {}
 
     // Getter method
-    public Moneda getSerie () {
+    public Moneda getSerie() {
         return this;
     }
 
     // No setter methods.
 
     // Abstract methods
-    public abstract int getValor ();
+    public abstract int getValor();
+
+    /**
+     * Compara esta moneda con la dada.
+     *
+     * @param moneda la moneda con la que se quiere comparar esta moneda
+     * @return un número positivo si el valor de esta moneda es mayor,
+     *         un número negativo si el valor de esta moneda es menor,
+     *         cero si son iguales.
+     */
+    @Override
+    public int compareTo(Moneda moneda) {
+        return this.getValor() - moneda.getValor();
+    }
 }
 
 // Subclase de Moneda: $100
