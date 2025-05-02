@@ -17,12 +17,12 @@ public class Expendedor {
     public static final int SPRITE = ProductoTipo.SPRITE.getNumero();
     public static final int SNICKERS = ProductoTipo.SNICKERS.getNumero();
     public static final int SUPER8 = ProductoTipo.SUPER8.getNumero();
-    // Precios de productos
-    public static final int PRECIO_COCA = ProductoTipo.COCA.getPrecio();
+
+    /*public static final int PRECIO_COCA = ProductoTipo.COCA.getPrecio();
     public static final int PRECIO_FANTA = ProductoTipo.FANTA.getPrecio();
     public static final int PRECIO_SPRITE = ProductoTipo.SPRITE.getPrecio();
     public static final int PRECIO_SNICKERS = ProductoTipo.SNICKERS.getPrecio();
-    public static final int PRECIO_SUPER8 = ProductoTipo.SUPER8.getPrecio();
+    public static final int PRECIO_SUPER8 = ProductoTipo.SUPER8.getPrecio();*/
 
     public Expendedor(int numProductos) {
         // Depositos de Bebidas
@@ -58,10 +58,10 @@ public class Expendedor {
         int valorMoneda = moneda.getValor();
         Producto producto = null;
 
-        if (cual == COCA && valorMoneda >= PRECIO_COCA) {
+        if (cual == ProductoTipo.COCA.getNumero() && valorMoneda >= ProductoTipo.COCA.getPrecio()) {
             producto = depositoCoca.getObjeto();
             if (producto != null) {
-                int vuelto = moneda.getValor() - PRECIO_COCA;
+                int vuelto = moneda.getValor() - ProductoTipo.COCA.getPrecio();
                 for (int i = 0; i < vuelto / 100; i++) {
                     depositoMonedas.addObjeto(new Moneda100());
                 }
@@ -72,10 +72,10 @@ public class Expendedor {
                 throw new NoHayProductoException("No hay coca-cola.");
             }
         }
-        else if (cual == FANTA && valorMoneda >= PRECIO_FANTA) {
+        else if (cual == ProductoTipo.FANTA.getNumero() && valorMoneda >= ProductoTipo.FANTA.getPrecio()) {
             producto = depositoFanta.getObjeto();
             if (producto != null) {
-                int vuelto = moneda.getValor() - PRECIO_FANTA;
+                int vuelto = moneda.getValor() - ProductoTipo.FANTA.getPrecio();
                 for (int i = 0; i < vuelto / 100; i++) {
                     depositoMonedas.addObjeto(new Moneda100());
                 }
@@ -86,10 +86,10 @@ public class Expendedor {
                 throw new NoHayProductoException("No hay fanta.");
             }
         }
-        else if (cual == SPRITE && valorMoneda >= PRECIO_SPRITE) {
+        else if (cual == ProductoTipo.SPRITE.getNumero() && valorMoneda >= ProductoTipo.SPRITE.getPrecio()) {
             producto = depositoSprite.getObjeto();
             if (producto != null) {
-                int vuelto = moneda.getValor() - PRECIO_SPRITE;
+                int vuelto = moneda.getValor() - ProductoTipo.SPRITE.getPrecio();
                 for (int i = 0; i < vuelto / 100; i++) {
                     depositoMonedas.addObjeto(new Moneda100());
                 }
@@ -100,10 +100,10 @@ public class Expendedor {
                 throw new NoHayProductoException("No hay sprite.");
             }
         }
-        else if (cual == SNICKERS && valorMoneda >= PRECIO_SNICKERS) {
+        else if (cual == ProductoTipo.SNICKERS.getNumero() && valorMoneda >= ProductoTipo.SNICKERS.getPrecio()) {
             producto = depositoSnickers.getObjeto();
             if (producto != null) {
-                int vuelto = moneda.getValor() - PRECIO_SNICKERS;
+                int vuelto = moneda.getValor() - ProductoTipo.SNICKERS.getPrecio();
                 for (int i = 0; i < vuelto / 100; i++) {
                     depositoMonedas.addObjeto(new Moneda100());
                 }
@@ -114,10 +114,10 @@ public class Expendedor {
                 throw new NoHayProductoException("No hay snickers.");
             }
         }
-        else if (cual == SUPER8 && valorMoneda >= PRECIO_SUPER8) {
+        else if (cual == ProductoTipo.SUPER8.getNumero() && valorMoneda >= ProductoTipo.SUPER8.getPrecio()) {
             producto = depositoSuper8.getObjeto();
             if (producto != null) {
-                int vuelto = moneda.getValor() - PRECIO_SUPER8;
+                int vuelto = moneda.getValor() - ProductoTipo.SUPER8.getPrecio();
                 for (int i = 0; i < vuelto / 100; i++) {
                     depositoMonedas.addObjeto(new Moneda100());
                 }
