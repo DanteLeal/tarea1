@@ -48,6 +48,7 @@ public class Main {
         Moneda moneda = null;
         Expendedor expendedor = null;
         Comprador comprador = null;
+        ProductoTipo producto = null;
 
         System.out.println("\n----Intentar comprar producto sin dinero suficiente:----\n");
 
@@ -109,7 +110,7 @@ public class Main {
 
         moneda = new Moneda500();
         expendedor = new Expendedor(1);
-        ProductoTipo producto = ProductoTipo.SUPER8;
+        producto = ProductoTipo.SUPER8;
         try {
             comprador = new Comprador(moneda, producto.getNumero(), expendedor);
         } catch (PagoIncorrectoException e) {
@@ -119,16 +120,17 @@ public class Main {
         } catch (NoHayProductoException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("Valor de la moneda: " + moneda.getValor());
-        System.out.println("Precio del producto: " + producto.getPrecio());
+        System.out.println("Valor de la moneda: $" + moneda.getValor());
+        System.out.println("Precio del producto: $" + producto.getPrecio());
         System.out.println("Consumió " + comprador.queConsumiste() + ". Vuelto: $" + comprador.cuantoVuelto());
 
         System.out.println("\n----Intentar comprar producto con dinero de sobra:----\n");
 
         moneda = new Moneda1500();
         expendedor = new Expendedor(1);
+        producto = ProductoTipo.SPRITE;
         try {
-            comprador = new Comprador(moneda, ProductoTipo.SPRITE.getNumero(), expendedor);
+            comprador = new Comprador(moneda, producto.getNumero(), expendedor);
         } catch (PagoIncorrectoException e) {
             System.out.println(e.getMessage());
         } catch (PagoInsuficienteException e) {
@@ -136,8 +138,8 @@ public class Main {
         } catch (NoHayProductoException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("Valor de la moneda: " + moneda.getValor());
-        System.out.println("Precio del producto: " + ProductoTipo.SPRITE.getPrecio());
+        System.out.println("Valor de la moneda: $" + moneda.getValor());
+        System.out.println("Precio del producto: $" + producto.getPrecio());
         System.out.println("Consumió " + comprador.queConsumiste() + ". Vuelto: $" + comprador.cuantoVuelto());
 
         System.out.println("\n----Probar enumeración----\n");
@@ -148,132 +150,29 @@ public class Main {
         System.out.println(ProductoTipo.SNICKERS.getNumero() + ", " + ProductoTipo.SNICKERS.toString() + ", $" + ProductoTipo.SNICKERS.getPrecio());
         System.out.println(ProductoTipo.SUPER8.getNumero() + ", " + ProductoTipo.SUPER8.toString() + ", $" + ProductoTipo.SUPER8.getPrecio());
 
-        /*
+        System.out.println("\n----Probar productos----\n");
 
-        // Inicializar objetos a utilizar
-        Expendedor exp = new Expendedor(5);
-        Moneda m = null;
-        Comprador c = null;
+        Producto cocacola = new CocaCola(1);
+        Producto fanta = new Fanta(2);
+        Producto sprite = new Sprite(3);
+        Producto snickers = new Snickers(4);
+        Producto super8 = new Super8(5);
+        System.out.println("serie: " + cocacola.getSerie() + ", sabor: " + cocacola.getSabor());
+        System.out.println("serie: " + fanta.getSerie() + ", sabor: " + fanta.getSabor());
+        System.out.println("serie: " + sprite.getSerie() + ", sabor: " + sprite.getSabor());
+        System.out.println("serie: " + snickers.getSerie() + ", sabor: " + snickers.getSabor());
+        System.out.println("serie: " + super8.getSerie() + ", sabor: " + super8.getSabor());
 
-        String expectedResult;
+        System.out.println("\n----Probar monedas----\n");
 
-        // Bebida que NO vende
-        System.out.println("-----Bebida que NO vende-----");
-        expectedResult = " || null, $500";
-        m = new Moneda500();
-        c = new Comprador(m,657,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $500
-        m = new Moneda500();
-        c = new Comprador(m,657,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $500
-        m = new Moneda500();
-        c = new Comprador(m,657,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $500
-        m = new Moneda500();
-        c = new Comprador(m,657,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $500
-        m = new Moneda500();
-        c = new Comprador(m,657,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $500
-        System.out.println();
-
-        // Trata de comprar SIN Moneda
-        System.out.println("-----Trata de comprar SIN Moneda-----");
-        expectedResult = " || null, $0";
-        m = null;
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $0
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $0
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $0
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $0
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $0
-        System.out.println();
-
-        // Con dinero JUSTO para el precio
-        System.out.println("-----Con dinero JUSTO para el precio-----");
-        expectedResult = " || cocacola, $0";
-        m = new Moneda1000();
-        c = new Comprador(m,Expendedor.COCA,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // cocacola $0
-        m = new Moneda1000();
-        c = new Comprador(m,Expendedor.COCA,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // cocacola $0
-        m = new Moneda1000();
-        c = new Comprador(m,Expendedor.COCA,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // cocacola $0
-        m = new Moneda1000();
-        c = new Comprador(m,Expendedor.COCA,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // cocacola $0
-        m = new Moneda1000();
-        c = new Comprador(m,Expendedor.COCA,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // cocacola $0
-        System.out.println();
-
-        // Con MENOS dinero que el precio
-        System.out.println("-----Con MENOS dinero que el precio-----");
-        expectedResult = " || null, $500";
-        m = new Moneda500();
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $500
-        m = new Moneda500();
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $500
-        m = new Moneda500();
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $500
-        m = new Moneda500();
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $500
-        m = new Moneda500();
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $500
-        System.out.println();
-
-        // Con MAS dinero que el precio
-        expectedResult = " || sprite, $500";
-        System.out.println("-----Con MAS dinero que el precio-----");
-        m = new Moneda1500();
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // sprite $500
-        m = new Moneda1500();
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // sprite $500
-        m = new Moneda1500();
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // sprite $500
-        m = new Moneda1500();
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // sprite $500
-        m = new Moneda1500();
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // sprite $500
-        System.out.println();
-
-        // Deposito VACIO
-        System.out.println("-----Deposito VACIO-----");
-        expectedResult = " || null, $1500";
-        m = new Moneda1500();
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $1500
-        m = new Moneda1500();
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $1500
-        m = new Moneda1500();
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $1500
-        m = new Moneda1500();
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $1500
-        m = new Moneda1500();
-        c = new Comprador(m,Expendedor.SPRITE,exp);
-        System.out.println(c.queBebiste()+", "+c.cuantoVuelto() + expectedResult); // null $1500
-        System.out.println();
-
-        */
+        Moneda m100 = new Moneda100();
+        Moneda m500 = new Moneda500();
+        Moneda m1000 = new Moneda1000();
+        Moneda m1500 = new Moneda1500();
+        System.out.println("serie: " + m100.getSerie() + ", valor: $" + m100.getValor());
+        System.out.println("serie: " + m500.getSerie() + ", valor: $" + m500.getValor());
+        System.out.println("serie: " + m1000.getSerie() + ", valor: $" + m1000.getValor());
+        System.out.println("serie: " + m1500.getSerie() + ", valor: $" + m1500.getValor());
     }
 }
 
