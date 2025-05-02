@@ -9,21 +9,6 @@ public class Expendedor {
     // Monedas para vuelto
     private final Deposito<Moneda> depositoMonedas;
 
-
-    // ToDo: Cambiar ProductoTipo.java para usar enum directamente, sin re-definir variables en Expendedor.
-    // Numeración de productos
-    public static final int COCA = ProductoTipo.COCA.getNumero();
-    public static final int FANTA = ProductoTipo.FANTA.getNumero();
-    public static final int SPRITE = ProductoTipo.SPRITE.getNumero();
-    public static final int SNICKERS = ProductoTipo.SNICKERS.getNumero();
-    public static final int SUPER8 = ProductoTipo.SUPER8.getNumero();
-
-    /*public static final int PRECIO_COCA = ProductoTipo.COCA.getPrecio();
-    public static final int PRECIO_FANTA = ProductoTipo.FANTA.getPrecio();
-    public static final int PRECIO_SPRITE = ProductoTipo.SPRITE.getPrecio();
-    public static final int PRECIO_SNICKERS = ProductoTipo.SNICKERS.getPrecio();
-    public static final int PRECIO_SUPER8 = ProductoTipo.SUPER8.getPrecio();*/
-
     public Expendedor(int numProductos) {
         // Depositos de Bebidas
         depositoCoca = new Deposito<>();
