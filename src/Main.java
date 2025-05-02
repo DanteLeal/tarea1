@@ -173,6 +173,81 @@ public class Main {
         System.out.println("serie: " + m500.getSerie() + ", valor: $" + m500.getValor());
         System.out.println("serie: " + m1000.getSerie() + ", valor: $" + m1000.getValor());
         System.out.println("serie: " + m1500.getSerie() + ", valor: $" + m1500.getValor());
+
+        System.out.println("\n----Probar compra de cada producto----\n");
+
+        moneda = new Moneda1500();
+        expendedor = new Expendedor(1);
+        producto = ProductoTipo.COCA;
+        try {
+            comprador = new Comprador(moneda, producto.getNumero(), expendedor);
+        } catch (PagoIncorrectoException e) {
+            System.out.println(e.getMessage());
+        } catch (PagoInsuficienteException e) {
+            System.out.println(e.getMessage());
+        } catch (NoHayProductoException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Valor de la moneda: $" + moneda.getValor());
+        System.out.println("Precio del producto: $" + producto.getPrecio());
+        System.out.println("Consumió " + comprador.queConsumiste() + ". Vuelto: $" + comprador.cuantoVuelto() + "\n");
+
+        producto = ProductoTipo.FANTA;
+        try {
+            comprador = new Comprador(moneda, producto.getNumero(), expendedor);
+        } catch (PagoIncorrectoException e) {
+            System.out.println(e.getMessage());
+        } catch (PagoInsuficienteException e) {
+            System.out.println(e.getMessage());
+        } catch (NoHayProductoException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Valor de la moneda: $" + moneda.getValor());
+        System.out.println("Precio del producto: $" + producto.getPrecio());
+        System.out.println("Consumió " + comprador.queConsumiste() + ". Vuelto: $" + comprador.cuantoVuelto() + "\n");
+
+        producto = ProductoTipo.SPRITE;
+        try {
+            comprador = new Comprador(moneda, producto.getNumero(), expendedor);
+        } catch (PagoIncorrectoException e) {
+            System.out.println(e.getMessage());
+        } catch (PagoInsuficienteException e) {
+            System.out.println(e.getMessage());
+        } catch (NoHayProductoException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Valor de la moneda: $" + moneda.getValor());
+        System.out.println("Precio del producto: $" + producto.getPrecio());
+        System.out.println("Consumió " + comprador.queConsumiste() + ". Vuelto: $" + comprador.cuantoVuelto() + "\n");
+
+        producto = ProductoTipo.SNICKERS;
+        try {
+            comprador = new Comprador(moneda, producto.getNumero(), expendedor);
+        } catch (PagoIncorrectoException e) {
+            System.out.println(e.getMessage());
+        } catch (PagoInsuficienteException e) {
+            System.out.println(e.getMessage());
+        } catch (NoHayProductoException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Valor de la moneda: $" + moneda.getValor());
+        System.out.println("Precio del producto: $" + producto.getPrecio());
+        System.out.println("Consumió " + comprador.queConsumiste() + ". Vuelto: $" + comprador.cuantoVuelto() + "\n");
+        System.out.println();
+
+        producto = ProductoTipo.SUPER8;
+        try {
+            comprador = new Comprador(moneda, producto.getNumero(), expendedor);
+        } catch (PagoIncorrectoException e) {
+            System.out.println(e.getMessage());
+        } catch (PagoInsuficienteException e) {
+            System.out.println(e.getMessage());
+        } catch (NoHayProductoException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Valor de la moneda: $" + moneda.getValor());
+        System.out.println("Precio del producto: $" + producto.getPrecio());
+        System.out.println("Consumió " + comprador.queConsumiste() + ". Vuelto: $" + comprador.cuantoVuelto() + "\n");
     }
 }
 
