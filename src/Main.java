@@ -265,6 +265,33 @@ public class Main {
             p = depositoProductos.getObjeto();
         }
         System.out.println("Depósito vaciado.");
+
+        System.out.println("\n----Probar expendedor----\n");
+
+        moneda = new Moneda1500();
+        expendedor = new Expendedor(3);
+        producto = ProductoTipo.COCA;
+        System.out.println("Precio del producto: $" + producto.getPrecio());
+        try {
+            System.out.println("Comprar " + expendedor.comprarProducto(moneda, producto.getNumero()).getSabor() + " con $" + moneda.getValor());
+            System.out.println("Comprar " + expendedor.comprarProducto(moneda, producto.getNumero()).getSabor() + " con $" + moneda.getValor());
+            System.out.println("Comprar " + expendedor.comprarProducto(moneda, producto.getNumero()).getSabor() + " con $" + moneda.getValor());
+            System.out.println("Comprar " + expendedor.comprarProducto(moneda, producto.getNumero()).getSabor() + " con $" + moneda.getValor());
+        } catch (PagoIncorrectoException e) {
+            System.out.println(e.getMessage());
+        } catch (PagoInsuficienteException e) {
+            System.out.println(e.getMessage());
+        } catch (NoHayProductoException e) {
+            System.out.println(e.getMessage());
+        }
+
+        Moneda m = expendedor.getVuelto();
+        while (m != null) {
+            System.out.println("Moneda $" + m.getValor() + " ha sido retirada del depósito");
+            m = expendedor.getVuelto();
+        }
+        System.out.println("Depósito vaciado.");
+        
     }
 }
 
