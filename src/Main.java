@@ -30,8 +30,7 @@ public class Main {
         monedas.add(new Moneda1000());
         monedas.add(new Moneda100());
         
-        // Mostrar monedas sin ordenar
-        System.out.println("\nMonedas sin ordenar");
+        System.out.println("\n----Monedas sin ordenar----\n");
         for (int i = 0; i < monedas.size(); i++) {
             System.out.println(monedas.get(i).toString());
         }
@@ -40,9 +39,30 @@ public class Main {
         monedas.sort(null);
 
         // Mostrar monedas ordenadas
-        System.out.println("\nMonedas ordenadas:");
+        System.out.println("\n----Monedas ordenadas:----\n");
         for (int i = 0; i < monedas.size(); i++) {
             System.out.println(monedas.get(i).toString());
+        }
+
+        // test de excepciones
+        System.out.println("\n----Comprar producto sin dinero suficiente:----\n");
+
+        Expendedor e1 = new Expendedor(5);
+        Moneda m1 = new Moneda500();
+        System.out.println("Valor de la moneda: " + m1.getValor());
+        System.out.println("Precio de producto: " + ProductoTipo.COCA.getPrecio());
+
+        try {
+            Comprador c1 = new Comprador(m1, ProductoTipo.COCA.getNumero(), e1);
+            System.out.println("Precio de producto: " + ProductoTipo.COCA.getPrecio());
+            System.out.println("Bebida comprada: " + c1.queBebiste());
+            System.out.println("Vuelto: " + c1.cuantoVuelto());
+        } catch (PagoIncorrectoException e) {
+            System.out.println(e.getMessage());
+        } catch (PagoInsuficienteException e) {
+            System.out.println(e.getMessage());
+        } catch (NoHayProductoException e) {
+            System.out.println(e.getMessage());
         }
         
         /*
