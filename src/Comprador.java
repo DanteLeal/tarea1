@@ -40,7 +40,7 @@ public class Comprador {
     /**
      * @return el sonido del producto que se ha comprado
      */
-    public String queBebiste () {
+    public String queConsumiste () {
         return sonido;
     }
 }
