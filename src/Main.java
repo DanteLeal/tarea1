@@ -44,19 +44,19 @@ public class Main {
             System.out.println(monedas.get(i).toString());
         }
 
-        // test de excepciones
-        System.out.println("\n----Comprar producto sin dinero suficiente:----\n");
+        // Test de excepciones
+        System.out.println("\n----Intentar comprar producto sin dinero suficiente:----\n");
 
-        Expendedor e1 = new Expendedor(5);
-        Moneda m1 = new Moneda500();
-        System.out.println("Valor de la moneda: " + m1.getValor());
-        System.out.println("Precio de producto: " + ProductoTipo.COCA.getPrecio());
+        Expendedor expendedor = new Expendedor(5);
+        Moneda moneda = new Moneda500();
+        System.out.println("Valor de la moneda: $" + moneda.getValor());
+        System.out.println("Precio de producto: $" + ProductoTipo.COCA.getPrecio());
 
         try {
-            Comprador c1 = new Comprador(m1, ProductoTipo.COCA.getNumero(), e1);
+            Comprador comprador = new Comprador(moneda, ProductoTipo.COCA.getNumero(), expendedor);
             System.out.println("Precio de producto: " + ProductoTipo.COCA.getPrecio());
-            System.out.println("Bebida comprada: " + c1.queBebiste());
-            System.out.println("Vuelto: " + c1.cuantoVuelto());
+            System.out.println("Bebida comprada: " + comprador.queBebiste());
+            System.out.println("Vuelto: " + comprador.cuantoVuelto());
         } catch (PagoIncorrectoException e) {
             System.out.println(e.getMessage());
         } catch (PagoInsuficienteException e) {
@@ -64,11 +64,62 @@ public class Main {
         } catch (NoHayProductoException e) {
             System.out.println(e.getMessage());
         }
-        
+
+        System.out.println("\n----Intentar comprar producto sin moneda:----\n");
+
+        try {
+            Comprador comprador = new Comprador(null, ProductoTipo.FANTA.getNumero(), expendedor);
+            System.out.println("Precio de producto: " + ProductoTipo.FANTA.getPrecio());
+            System.out.println("Bebida comprada: " + comprador.queBebiste());
+            System.out.println("Vuelto: " + comprador.cuantoVuelto());
+        } catch (PagoIncorrectoException e) {
+            System.out.println(e.getMessage());
+        } catch (PagoInsuficienteException e) {
+            System.out.println(e.getMessage());
+        } catch (NoHayProductoException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("\n----Intentar comprar producto con deposito vacio:----\n");
+
+        // Expendedor sin productos
+        expendedor = new Expendedor(0);
+
+        System.out.println("Valor de la moneda: $" + moneda.getValor());
+        System.out.println("Precio de producto: $" + ProductoTipo.SNICKERS.getPrecio());
+
+        try {
+            Comprador comprador = new Comprador(moneda, ProductoTipo.SNICKERS.getNumero(), expendedor);
+            System.out.println("Precio de producto: " + ProductoTipo.SNICKERS.getPrecio());
+            System.out.println("Bebida comprada: " + comprador.queBebiste());
+            System.out.println("Vuelto: " + comprador.cuantoVuelto());
+        } catch (PagoIncorrectoException e) {
+            System.out.println(e.getMessage());
+        } catch (PagoInsuficienteException e) {
+            System.out.println(e.getMessage());
+        } catch (NoHayProductoException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("\n----Intentar comprar producto inexistente:----\n");
+
+        try {
+            Comprador comprador = new Comprador(moneda, 132, expendedor);
+            System.out.println("Precio de producto: " + ProductoTipo.SNICKERS.getPrecio());
+            System.out.println("Bebida comprada: " + comprador.queBebiste());
+            System.out.println("Vuelto: " + comprador.cuantoVuelto());
+        } catch (PagoIncorrectoException e) {
+            System.out.println(e.getMessage());
+        } catch (PagoInsuficienteException e) {
+            System.out.println(e.getMessage());
+        } catch (NoHayProductoException e) {
+            System.out.println(e.getMessage());
+        }
+
         /*
 
         // Inicializar objetos a utilizar
-        Expendedor exp = new Expendedor(5,1000);
+        Expendedor exp = new Expendedor(5);
         Moneda m = null;
         Comprador c = null;
 
