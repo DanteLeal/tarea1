@@ -44,9 +44,15 @@ public class Expendedor {
         }
     }
 
-    public Producto comprarProducto(Moneda moneda, int cual) {
-        if (moneda == null) {            
-            return null;
+    /**
+     * Compra un producto de la máquina expendedora.
+     * @param moneda la moneda con la que se va a realizar la compra
+     * @param cual el número del producto a comprar
+     * @return el producto comprado, o null si no se puede comprar
+     */
+    public Producto comprarProducto(Moneda moneda, int cual) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
+        if (moneda == null) {
+            throw new PagoIncorrectoException("El pago es incorrecto.");
         }
 
         int valorMoneda = moneda.getValor();
@@ -63,7 +69,7 @@ public class Expendedor {
             }
             else {
                 depositoMonedas.addObjeto(moneda);
-                return null;
+                throw new NoHayProductoException("No hay coca-cola.");
             }
         }
         else if (cual == FANTA && valorMoneda >= PRECIO_FANTA) {
@@ -77,7 +83,7 @@ public class Expendedor {
             }
             else {
                 depositoMonedas.addObjeto(moneda);
-                return null;
+                throw new NoHayProductoException("No hay fanta.");
             }
         }
         else if (cual == SPRITE && valorMoneda >= PRECIO_SPRITE) {
@@ -91,7 +97,7 @@ public class Expendedor {
             }
             else {
                 depositoMonedas.addObjeto(moneda);
-                return null;
+                throw new NoHayProductoException("No hay sprite.");
             }
         }
         else if (cual == SNICKERS && valorMoneda >= PRECIO_SNICKERS) {
@@ -105,7 +111,7 @@ public class Expendedor {
             }
             else {
                 depositoMonedas.addObjeto(moneda);
-                return null;
+                throw new NoHayProductoException("No hay snickers.");
             }
         }
         else if (cual == SUPER8 && valorMoneda >= PRECIO_SUPER8) {
@@ -119,12 +125,12 @@ public class Expendedor {
             }
             else {
                 depositoMonedas.addObjeto(moneda);
-                return null;
+                throw new NoHayProductoException("No hay super 8.");
             }
         }
         else {
             depositoMonedas.addObjeto(moneda);
-            return null;
+            throw new PagoInsuficienteException("No alcanza para comprar el producto o el número de depósito es erróneo.");
         }
     }
 
