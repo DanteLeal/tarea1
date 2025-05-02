@@ -128,9 +128,13 @@ public class Expendedor {
                 throw new NoHayProductoException("No hay super 8.");
             }
         }
-        else {
+        else if (cual != ProductoTipo.COCA.getNumero() && cual != ProductoTipo.FANTA.getNumero() && cual != ProductoTipo.SPRITE.getNumero() && cual != ProductoTipo.SNICKERS.getNumero() && cual != ProductoTipo.SUPER8.getNumero()) {
             depositoMonedas.addObjeto(moneda);
-            throw new PagoInsuficienteException("No alcanza para comprar el producto o el número de depósito es erróneo.");
+            throw new NoHayProductoException("El número de depósito es erróneo.");
+        }
+        else {   
+            depositoMonedas.addObjeto(moneda);
+            throw new PagoInsuficienteException("No alcanza para comprar el producto.");
         }
     }
 
