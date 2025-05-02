@@ -248,6 +248,23 @@ public class Main {
         System.out.println("Valor de la moneda: $" + moneda.getValor());
         System.out.println("Precio del producto: $" + producto.getPrecio());
         System.out.println("Consumió " + comprador.queConsumiste() + ". Vuelto: $" + comprador.cuantoVuelto() + "\n");
+
+        System.out.println("\n----Test de depósito----\n");
+
+        // Lenar depósito con productos
+        Deposito<Producto> depositoProductos = new Deposito<>();
+        depositoProductos.addObjeto(new CocaCola(1));
+        depositoProductos.addObjeto(new Fanta(2));
+        depositoProductos.addObjeto(new Sprite(3));
+        depositoProductos.addObjeto(new Snickers(4));
+        depositoProductos.addObjeto(new Super8(5));
+
+        Producto p = depositoProductos.getObjeto();
+        while (p != null) {
+            System.out.println("producto sabor " + p.getSabor() + " con serie " + p.getSerie() + " ha sido retirado del depósito");
+            p = depositoProductos.getObjeto();
+        }
+        System.out.println("Depósito vaciado.");
     }
 }
 
