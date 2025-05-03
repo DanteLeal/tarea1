@@ -3,22 +3,6 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-        /*/ Test dulce independiente
-        Snickers test = new Snickers(64);
-        System.out.println("ID: "+ test.getSerie());
-        System.out.println("Sabor: "+ test.getSabor());
-
-        // Test deposito independiente
-        Deposito<Fanta> fantas= new Deposito<Fanta>();
-        for (int i = 0; i < 6; i++) {
-            fantas.addObjeto(new Fanta(200+i));
-        }
-        Producto producto = fantas.getObjeto();
-        while (producto != null) {
-            System.out.println(producto.getSabor() + "[ID: " + producto.getSerie() + "]" + "[Precio: " + ProductoTipo.FANTA.getPrecio() + "]");
-            producto = fantas.getObjeto();
-        } */
-
         // Test sort de monedas
         ArrayList<Moneda> monedas = new ArrayList<>();
         monedas.add(new Moneda500());
