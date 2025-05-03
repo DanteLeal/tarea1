@@ -6,7 +6,8 @@ public class Comprador {
     private final int vuelto;
 
     /**
-     * Constructor de Comprador.
+     * Constructor de Comprador
+     * 
      * @param moneda la moneda con la que se va a realizar la compra
      * @param cualBebida el número del producto a comprar
      * @param expendedor la máquina expendedora en la que se va a comprar
