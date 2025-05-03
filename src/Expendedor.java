@@ -1,3 +1,6 @@
+/**
+ * Clase Expendedor que representa una máquina expendedora de bebidas y dulces.
+ */
 public class Expendedor {
     // Bebidas
     private final Deposito<Producto> depositoCoca;
@@ -9,6 +12,11 @@ public class Expendedor {
     // Monedas para vuelto
     private final Deposito<Moneda> depositoMonedas;
 
+    /**
+     * Constructor de la clase Expendedor.
+     * 
+     * @param numProductos el número de cada tipo de productos que se van a agregar al depósito
+     */
     public Expendedor(int numProductos) {
         // Depositos de Bebidas
         depositoCoca = new Deposito<>();
@@ -31,9 +39,13 @@ public class Expendedor {
 
     /**
      * Compra un producto de la máquina expendedora.
+     * 
      * @param moneda la moneda con la que se va a realizar la compra
      * @param cual el número del producto a comprar
      * @return el producto comprado, o null si no se puede comprar
+     * @throws PagoIncorrectoException si el pago es incorrecto
+     * @throws PagoInsuficienteException si el pago es insuficiente
+     * @throws NoHayProductoException si no hay productos disponibles
      */
     public Producto comprarProducto(Moneda moneda, int cual) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         if (moneda == null) {
@@ -123,6 +135,11 @@ public class Expendedor {
         }
     }
 
+    /** 
+     * Devuelve el vuelto que se ha obtenido al hacer la compra.
+     * 
+     * @return el vuelto que se ha obtenido al hacer la compra
+     */
     public Moneda getVuelto () {
         return depositoMonedas.getObjeto();
     }
