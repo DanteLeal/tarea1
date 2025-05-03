@@ -1,18 +1,25 @@
-// Clase Moneda (Monedas que se almacenarán en Depósitos de la clase DepositoM.java)
+/**
+ * Clase Moneda que representa una moneda que se puede introducir en una maquina expendedora.
+ */
 public abstract class Moneda implements Comparable<Moneda> {
-    // No variables.
 
-    // Constructor method vacío
+    /**
+     *  Metodo constructor
+     */
     public Moneda() {}
 
-    // Getter method
+    /**
+     * Metodo getter
+     * 
+     * @return la moneda
+     */
     public Moneda getSerie() {
         return this;
     }
 
-    // No setter methods.
-
-    // Abstract methods
+    /**
+     * Metodo abstracto que retorna el valor de la moneda
+     */
     public abstract int getValor();
 
     /**
@@ -29,28 +36,44 @@ public abstract class Moneda implements Comparable<Moneda> {
     }
 }
 
-// Subclase de Moneda: $100
+/** 
+ * Subclase de Moneda: $100
+ */
 class Moneda100 extends Moneda {
-    // Construct method
+    /**
+     * Metodo constructor
+     */
     public Moneda100() {
         super();
     }
 
-    // Abstract method from superclass
+    /**
+     * Metodo abstracto que retorna el valor de la moneda
+     * 
+     * @return el valor de la moneda
+     */
     @Override
     public int getValor() {
         return 100;
     }
 }
 
-// Subclase de Moneda: $500
+/**
+ * Subclase de Moneda: $500  
+ */
 class Moneda500 extends Moneda {
-    // Construct method
+    /**
+     * Metodo constructor
+     */
     public Moneda500() {
         super();
     }
 
-    // Abstract method from superclass
+    /**
+     * Metodo abstracto que retorna el valor de la moneda
+     * 
+     * @return el valor de la moneda
+     */
     @Override
     public int getValor() {
         return 500;
@@ -59,26 +82,40 @@ class Moneda500 extends Moneda {
 
 // Subclase de Moneda: $1000
 class Moneda1000 extends Moneda {
-    // Construct method
+    /** 
+     * Metodo constructor
+     */
     public Moneda1000() {
         super();
     }
 
-    // Abstract method from superclass
+    /**
+     * Metodo abstracto que retorna el valor de la moneda
+     * 
+     * @return el valor de la moneda
+     */
     @Override
     public int getValor() {
         return 1000;
     }
 }
 
-// Subclase de Moneda: $1500
+/**
+ * Subclase de Moneda: $1500
+ */
 class Moneda1500 extends Moneda {
-    // Construct method
+    /**
+     * Metodo constructor 
+     */
     public Moneda1500() {
         super();
     }
 
-    // Abstract method from superclass
+    /**
+     * Metodo abstracto que retorna el valor de la moneda
+     * 
+     * @return el valor de la moneda
+     */
     @Override
     public int getValor() {
         return 1500;
